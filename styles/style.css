@@ -158,13 +158,34 @@ a:hover {
     #container {
         width: 65%;
     }
+
+    .img {
+        width: 12%;
+        padding: 0px 20px;
+    }
+
+    .pick {
+        font-size: 55px;
+    }
+
+    .container2 {
+        padding-top: 30px;
+    }
+
+    #container3 {
+        width: 70%;
+    }
+
+    #opengames {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 600px) {
 
     h1 {
         font-size: 40px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
     h2 {
@@ -173,5 +194,26 @@ a:hover {
 
     #container {
         width: 65%;
+    }
+
+    .container2 {
+        padding-top: 25px;
+    }
+
+    .img {
+        width: 15%;
+        padding: 0px 20px;
+    }
+
+    .pick {
+        font-size: 55px;
+    }
+
+    #container3 {
+        width: 80%;
+    }
+
+    #opengames {
+        font-size: 20px;
     }
 }
