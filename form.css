@@ -1,0 +1,99 @@
+body {
+    background-color: #F9F2ED;
+    font-family: 'VT323', monospace;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+}
+
+.container2 {
+    display: grid;
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.p1 {
+    font-size: 35px;
+    text-align: center;
+    color: #3AB0FF;
+}
+
+.p2 {
+    font-size: 35px;
+    text-align: center;
+    color: #FFB562;
+}
+
+.p3 {
+    font-size: 35px;
+    text-align: center;
+    color: #3AB0FF;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #F9F2ED;
+    text-decoration: none;
+}
+
+label {
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+input[type=text],
+input[type=password] {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #ffffff;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=checkbox] {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #F9F2ED;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.btn {
+    background-color: #f87474;
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 30px;
+    padding: 16px;
+    margin-left: 15px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
