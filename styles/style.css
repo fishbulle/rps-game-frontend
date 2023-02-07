@@ -5,17 +5,13 @@ body {
 
 .wrapper {
     display: grid;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    justify-content: center;   
     margin-top: 100px;
 }
 
 .wrapper2 {
     display: grid;
     justify-content: center;
-    align-items: center;
-    align-content: center;
 }
 
 h1 {
