@@ -49,24 +49,28 @@ a:hover {
 }
 
 label {
-    font-size: 20px;
-    padding-left: 5px;
+    display: block;
+    margin: 20px 0 5px 0;
+    font-size: 22px;
 }
 
 input[type=text],
 input[type=password] {
-    width: 90%;
     padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
     border: none;
-    background: #ffffff;
+    background: #f2e3d9;
+    color: black;
 }
 
 input[type=text]:focus,
 input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
+    background-color: #f2e3d9;
+    outline: 2px solid #e5c7b3;
+}
+
+::placeholder {
+    color: #deb9a0;
+    opacity: 1;
 }
 
 input[type=checkbox] {
@@ -87,13 +91,13 @@ hr {
     font-family: 'VT323', monospace;
     font-size: 30px;
     padding: 16px;
-    margin-left: 15px;
     border: none;
     cursor: pointer;
-    width: 90%;
+    width: 100%;
+    margin: 20px 0 0 0;
     opacity: 0.9;
 }
 
-.registerbtn:hover {
+.btn:hover {
     opacity: 1;
 }

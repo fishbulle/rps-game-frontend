@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,36 +13,40 @@
     <link rel="stylesheet" href="styles/form.css">
 
     <link rel="icon" type="image/x-icon" href="img/rock2.png">
-    
+
     <title>ROCK PAPER SCISSORS</title>
 </head>
+
 <body>
 
-<form action="action_page.php" method="post">
-    <div class="container">
-        <h1>REGISTER NEW USER</h1>
-        <p class="p1">FILL IN THIS FORM TO CREATE A NEW ACCOUNT.</p>
+    <form action="action_page.php" method="post">
+        <div class="container">
+            <h1>REGISTER NEW USER</h1>
+            <p class="p1">FILL IN THIS FORM TO CREATE A NEW ACCOUNT.</p>
 
-        <div class="container2">
-        <label for="email">NAME:</label>
-        <input type="text" placeholder="Enter Name" name="name" id="name" required>
-       
-        <label for="username">USERNAME:</label>
-        <input type="text" placeholder="Enter Username" name="username" id="username" required>
+            <section class="container2">
+                <label for="email">NAME:</label>
+                <input type="text" placeholder="Enter Name" name="name" id="name" required>
 
-        <label for="psw">PASSWORD:</label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-        
-        <label for="psw-repeat">REPEAT PASSWORD:</label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                <label for="username">USERNAME:</label>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
-        <button type="submit" class="btn">REGISTER</button>
+                <label for="psw">PASSWORD:</label>
+                <input type="password"
+                    placeholder="Enter Password (minimum eight characters, at least one letter and one number)"
+                    name="psw" id="psw" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+
+                <label for="psw-repeat">REPEAT PASSWORD:</label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+
+                <button type="submit" class="btn">REGISTER</button>
+            </section>
+
+            <p class="p2">ALREADY HAVE AN ACCOUNT? <br><a href="login.html">> SIGN IN</a></p>
+            <p class="p3"><a href="index.html">> EXIT</a></p>
         </div>
+    </form>
 
-        <p class="p2">ALREADY HAVE AN ACCOUNT? <br><a href="login.html">> SIGN IN</a></p>
-        <p class="p3"><a href="index.html">> EXIT</a></p>
-    </div>
-</form>
-    
 </body>
+
 </html>
