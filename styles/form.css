@@ -58,18 +58,18 @@ input[type=text],
 input[type=password] {
     padding: 15px;
     border: none;
-    background: #f2e3d9;
+    background: #ffffff;
     color: black;
 }
 
 input[type=text]:focus,
 input[type=password]:focus {
-    background-color: #f2e3d9;
+    background-color: #ffffff;
     outline: 2px solid #e5c7b3;
 }
 
 ::placeholder {
-    color: #deb9a0;
+    color: #ebd5c6;
     opacity: 1;
 }
 
@@ -86,6 +86,7 @@ hr {
 
 /* Set a style for the submit/register button */
 .btn {
+    display: block;
     background-color: #f87474;
     color: white;
     font-family: 'VT323', monospace;
@@ -93,8 +94,8 @@ hr {
     padding: 16px;
     border: none;
     cursor: pointer;
-    width: 100%;
-    margin: 20px 0 0 0;
+    width: 80%;
+    margin: 20px auto;
     opacity: 0.9;
 }
 
