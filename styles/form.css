@@ -29,14 +29,15 @@ h1 {
     font-size: 35px;
     text-align: center;
     color: #FFB562;
+    margin-top: 0;
 }
 
 .p3 {
     font-size: 35px;
     text-align: center;
     color: #3AB0FF;
+    margin-top: 0;
 }
-
 
 a {
     color: inherit;
@@ -95,7 +96,7 @@ hr {
     border: none;
     cursor: pointer;
     width: 80%;
-    margin: 20px auto;
+    margin: 50px auto;
     opacity: 0.9;
 }
 
