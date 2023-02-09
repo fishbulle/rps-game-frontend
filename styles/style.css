@@ -5,12 +5,14 @@ body {
 
 .wrapper {
     display: grid;
+    grid-template-columns: auto;
     justify-content: center;   
     margin-top: 100px;
 }
 
 .wrapper2 {
     display: grid;
+    grid-template-columns: auto;
     justify-content: center;
 }
 
