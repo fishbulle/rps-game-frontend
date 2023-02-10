@@ -21,12 +21,12 @@ function checker(input) {
     let choices = ["rock", "paper", "scissors"];
     let num = Math.floor(Math.random() * 3);
 
-    document.getElementById("botMove").innerHTML = `Bot chose <span> ${input.toUpperCase()} </span>`;
+    document.getElementById("botMove").innerHTML = `Bot chose <span> ${choices[num].toUpperCase()} </span>`;
     document.getElementById("playerMove").innerHTML = `You chose <span> ${input.toUpperCase()} </span>`;
 
     let botChoice = choices[num];
 
-    switch (choices[input][botChoice]) {
+    switch (choicesObj[input][botChoice]) {
         case 'win':
             result.innerHTML = "YOU WIN!"
             break;
