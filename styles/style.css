@@ -36,12 +36,6 @@ a:hover {
     text-decoration: none;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #container {
     display: grid;
     margin: 0px auto;
@@ -62,6 +56,12 @@ a:hover {
     display: grid;
     margin: 0px auto;
     width: 50%;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img {
