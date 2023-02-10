@@ -1,3 +1,4 @@
+let [botScore, playerScore] = [0, 0];
 let result = document.querySelector(".result");
 let choicesObj = {
     'rock': {
@@ -23,18 +24,23 @@ function checker(input) {
 
     document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${choices[num].toUpperCase()} </span>`;
     document.getElementById("playerMove").innerHTML = `YOU PICKED <span> ${input.toUpperCase()} </span>`;
-
+    
     let botChoice = choices[num];
 
     switch (choicesObj[input][botChoice]) {
         case 'win':
             result.innerHTML = "YOU WIN!"
+            playerScore++;
             break;
         case 'lose':
             result.innerHTML = "YOU LOSE!"
+            botScore++;
             break;
         default:
             result.innerHTML = "DRAW!"
             break;
     }
+
+    document.getElementById("botScore").innerHTML = botScore;
+    document.getElementById("playerScore").innerHTML = playerScore;
 }
