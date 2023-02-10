@@ -1,4 +1,5 @@
 let [botScore, playerScore] = [0, 0];
+let moves = 0;
 let result = document.querySelector(".result");
 let choicesObj = {
     'rock': {
@@ -21,26 +22,50 @@ let choicesObj = {
 function checker(input) {
     let choices = ["rock", "paper", "scissors"];
     let num = Math.floor(Math.random() * 3);
+    let botChoice = choices[num];
+    let movesLeft = document.getElementById("movesLeft");
 
     document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${choices[num].toUpperCase()} </span>`;
     document.getElementById("playerMove").innerHTML = `YOU PICKED <span> ${input.toUpperCase()} </span>`;
-    
-    let botChoice = choices[num];
+    movesLeft.innerHTML = `MOVES LEFT: ${10-moves}`;
+        
 
     switch (choicesObj[input][botChoice]) {
         case 'win':
             result.innerHTML = "YOU WIN!"
             playerScore++;
+            moves++;
             break;
         case 'lose':
             result.innerHTML = "YOU LOSE!"
             botScore++;
+            moves++;
             break;
         default:
             result.innerHTML = "DRAW!"
+            moves++;
             break;
     }
 
     document.getElementById("botScore").innerHTML = botScore;
     document.getElementById("playerScore").innerHTML = playerScore;
+
+    if (moves == 10) {
+        gameOver();
+    }
+}
+
+function gameOver() {
+
+    movesLeft.style.display = 'none';
+
+    //TODO make so that you can't keep playing once game is over
+
+    if (playerScore > botScore) {
+        result.innerHTML = "GAME OVER. PLAYER WON!"
+    } else if (botScore > playerScore) {
+        result.innerHTML = "GAME OVER. BOT WON!"
+    } else {
+        result.innerHTML = "GAME OVER. IT'S A DRAW!"
+    }
 }
