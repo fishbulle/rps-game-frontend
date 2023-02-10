@@ -35,12 +35,13 @@
             </p>
 
             <figure class="center">
-                <img class="img" src="img/rock2.png" alt="rock">
-                <img class="img" src="img/paper2.png" alt="paper">
-                <img class="img" src="img/sax.png" alt="scissors">
+                <img id="rock" class="img" src="img/rock2.png" alt="rock" onclick="move()"></button>
+                <img id="paper" class="img" src="img/paper2.png" alt="paper" onclick="move()">
+                <img id="scissors" class="img" src="img/sax.png" alt="scissors" onclick="move()">
             </figure>
 
-            <p class="result">PLAYER NAME + RESULT</p>
+            <p id="playerMove"></p>
+            <p class="result">RESULT</p>
         </section>
 
         <article class="container2">
@@ -53,6 +54,8 @@
         </article>
 
     </main>
+
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
