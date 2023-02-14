@@ -60,6 +60,7 @@ function gameOver() {
     // movesLeft.style.display = 'none';
 
     //TODO make so that you can't keep playing once game is over
+    //make images unclickable
 
     if (playerScore > botScore && playerScore <= 6) {
         result.innerHTML = "GAME OVER. PLAYER WON!"
