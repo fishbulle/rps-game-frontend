@@ -27,7 +27,7 @@ function checker(input) {
 
     document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${choices[num].toUpperCase()} </span>`;
     document.getElementById("playerMove").innerHTML = `YOU PICKED <span> ${input.toUpperCase()} </span>`;
-    movesLeft.innerHTML = `MOVES LEFT: ${10-moves}`;
+    movesLeft.innerHTML = `MOVES LEFT: ${9-moves}`;
         
 
     switch (choicesObj[input][botChoice]) {
@@ -57,15 +57,16 @@ function checker(input) {
 
 function gameOver() {
 
-    movesLeft.style.display = 'none';
+    // movesLeft.style.display = 'none';
 
     //TODO make so that you can't keep playing once game is over
 
-    if (playerScore > botScore) {
+    if (playerScore > botScore && playerScore <= 6) {
         result.innerHTML = "GAME OVER. PLAYER WON!"
-    } else if (botScore > playerScore) {
+    } else if (botScore > playerScore && botScore <= 6) {
         result.innerHTML = "GAME OVER. BOT WON!"
     } else {
         result.innerHTML = "GAME OVER. IT'S A DRAW!"
     }
+
 }
