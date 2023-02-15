@@ -1,99 +1,3 @@
-// let playerScore = 0;
-// let botScore = 0;
-// let moves = 0;
-// const rock = document.getElementById("rock");
-// const paper = document.getElementById("paper");
-// const scissors = document.getElementById("scissors");
-// const options = document.querySelectorAll(".img");
-// let movesLeft = document.getElementById("movesLeft");
-// let result = document.querySelector(".result");
-
-// options.forEach((option) => {
-//     option.addEventListener("click", function () { // lägger till en klickfunktion på sten, sax, påse bilderna
-//         const playerChoice = this.textContent;  // när spelaren klickar på sitt val hämtas det genom att textContent property läses, this hänvisar till input i HTML
-
-//         const botOptions = ["rock", "paper", "scissors"];
-//         const botChoice = botOptions[Math.floor(Math.random() * 3)];  // väljer slumpmässigt ut en av tre valmöjligheter
-
-//         document.getElementById("playerMove").innerHTML = `YOU PICKED <span> ${playerChoice.toUpperCase()} </span> `;
-//         document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${botChoice.toUpperCase()} </span> `;
-
-//         compareChoices(playerChoice, botChoice); // calling the game logic
-//         updateScore();
-//     });
-// });
-
-// function compareChoices(playerChoice, botChoice) {
-
-//     // draw check
-//     if (playerChoice === botChoice) {
-//         result.innerHTML = "DRAW!"
-//         //                 moves++;
-//     }
-
-//     // rock check
-//     if (playerChoice === "rock") {
-//         if (botChoice === "scissors") {
-//             result.innerHTML = "YOU WIN!"
-//             playerScore++;
-//             //                 moves++;
-//         } else {
-//             result.innerHTML = "BOT WINS!"
-//             botScore++;
-//             //                 moves++;
-//         }
-//     } 
-
-//     // paper check
-//     else if (playerChoice === "paper") {
-//         if (botChoice === "rock") {
-//             result.innerHTML = "YOU WIN!"
-//             playerScore++;
-//         } else {
-//             result.innerHTML = "BOT WINS!"
-//             botScore++;
-//         }
-//     } 
-
-//     // scissors check
-//     else {
-//         if (botChoice === "paper") {
-//             result.innerHTML = "YOU WIN!"
-//             playerScore++;
-//         } else {
-//             result.innerHTML = "BOT WINS!"
-//             botScore++;
-//         }
-//     }
-// }
-
-// // function to update the score
-// function updateScore() {
-//     document.getElementById("botScore").innerHTML = botScore;
-//     document.getElementById("playerScore").innerHTML = playerScore;
-// }
-
-// // function winner() {
-// //     if (playerScore)
-// // }
-
-// function checkWinner() {
-//     if (pScore === 5 || cScore === 5) {
-//         const winner =
-//             pScore === 5
-//                 ? "You win the game! Congratulations!"
-//                 : "Computer wins the game! Try again next time!";
-//         alert(winner);
-//         return true;
-//     }
-//     return false;
-// }
-
-
-
-
-
-
 let botScore = 0;
 let playerScore = 0;
 let moves = 0;
@@ -131,7 +35,7 @@ function checker(input) {  // input = draget spelaren gör
     compareChoices([input], [botChoice]);
     updateScore();
 
-    if (moves == 10) {
+    if (moves === 10) {
         gameOver();
     }
 }
@@ -163,11 +67,6 @@ function updateScore() {
 
 function gameOver() {
 
-    // movesLeft.style.display = 'none';
-
-    //TODO make so that you can't keep playing once game is over
-    //make images unclickable
-
     if (playerScore > botScore && playerScore <= 6) {
         result.innerHTML = "GAME OVER. PLAYER WON!"
     } else if (botScore > playerScore && botScore <= 6) {
@@ -176,4 +75,7 @@ function gameOver() {
         result.innerHTML = "GAME OVER. IT'S A DRAW!"
     }
 
+    playerScore = 0;
+    botScore = 0;
+    moves = 0;
 }
