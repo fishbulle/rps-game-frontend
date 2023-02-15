@@ -1,5 +1,6 @@
 let [botScore, playerScore] = [0, 0];
 let moves = 0;
+let movesLeft = document.getElementById("movesLeft");
 let result = document.querySelector(".result");
 let choicesObj = {
     'rock': {
@@ -19,11 +20,12 @@ let choicesObj = {
     }
 }
 
+movesLeft.innerHTML = `MOVES LEFT: ${10}`;
+
 function checker(input) {
     let choices = ["rock", "paper", "scissors"];
     let num = Math.floor(Math.random() * 3);
     let botChoice = choices[num];
-    let movesLeft = document.getElementById("movesLeft");
 
     document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${choices[num].toUpperCase()} </span>`;
     document.getElementById("playerMove").innerHTML = `YOU PICKED <span> ${input.toUpperCase()} </span>`;

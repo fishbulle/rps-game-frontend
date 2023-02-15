@@ -111,9 +111,9 @@ a:hover {
     margin-top: 60px;
 }
 
-.test {
+.moves {
     display: grid;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 #playerMove,
@@ -124,11 +124,15 @@ a:hover {
     margin: auto;
 }
 
+#movesLeft {
+    padding-bottom: 10px;
+}
+
 .result {
     text-align: center;
     font-size: 60px;
-    margin-top: 60px;
-    margin-bottom: 0px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .pick {
