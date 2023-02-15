@@ -1,33 +1,85 @@
-const options = document.querySelectorAll(".img");
+let playerScore = 0;
+let botScore = 0;
+let moves = 0;
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+// const options = document.querySelectorAll(".img");
+let movesLeft = document.getElementById("movesLeft");
+let result = document.querySelector(".result");
 
 options.forEach((option) => {
-    option.addEventListener("click", function() { // lägger till en klickfunktion på sten, sax, påse bilderna
+    option.addEventListener("click", function () { // lägger till en klickfunktion på sten, sax, påse bilderna
         const playerChoice = this.textContent;  // när spelaren klickar på sitt val hämtas det genom att textContent property läses, this hänvisar till input i HTML
 
         const botOptions = ["rock", "paper", "scissors"];
         const botChoice = botOptions[Math.floor(Math.random() * 3)];  // väljer slumpmässigt ut en av tre valmöjligheter
+
+        document.getElementById("playerMove").textContent = `YOU PICKED ${playerChoice.toUpperCase()} `;
+        document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${botChoice.toUpperCase()} </span>`;
+
+        compareChoices(playerChoice, botChoice); // calling the game logic
+        updateScore();
     });
 });
 
 function compareChoices(playerChoice, botChoice) {
 
+    // draw check
     if (playerChoice === botChoice) {
         result.innerHTML = "DRAW!"
-//                 moves++;
+        //                 moves++;
     }
 
+    // rock check
     if (playerChoice === "rock") {
         if (botChoice === "scissors") {
             result.innerHTML = "YOU WIN!"
-//                 playerScore++;
-//                 moves++;
+            playerScore++;
+            //                 moves++;
         } else {
             result.innerHTML = "BOT WINS!"
-//                 botScore++;
-//                 moves++;
+            botScore++;
+            //                 moves++;
+        }
+    } 
+
+    // paper check
+    else if (playerChoice === "paper") {
+        if (botChoice === "rock") {
+            result.innerHTML = "YOU WIN!"
+            playerScore++;
+        } else {
+            result.innerHTML = "BOT WINS!"
+            botScore++;
+        }
+    } 
+    
+    // scissors check
+    else {
+        if (botChoice === "paper") {
+            result.innerHTML = "YOU WIN!"
+            playerScore++;
+        } else {
+            result.innerHTML = "BOT WINS!"
+            botScore++;
         }
     }
 }
+
+// function to update the score
+function updateScore() {
+    document.getElementById("botScore").innerHTML = botScore;
+    document.getElementById("playerScore").innerHTML = playerScore;
+}
+
+// function winner() {
+//     if (playerScore)
+// }
+
+
+
+
 
 
 // let [botScore, playerScore] = [0, 0];
