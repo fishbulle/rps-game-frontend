@@ -117,6 +117,8 @@ a:hover {
 }
 
 #playerMove,
+#player1Move,
+#player2Move,
 #botMove,
 #movesLeft {
     text-align: center;
