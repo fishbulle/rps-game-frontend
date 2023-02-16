@@ -1,6 +1,9 @@
 body {
     background-color: #F9F2ED;
     font-family: 'VT323', monospace;
+    --blue: #3AB0FF;
+    --orange: #FFB562;
+    --pink: #F87474;
 }
 
 .container {
@@ -22,20 +25,20 @@ h1 {
 .p1 {
     font-size: 35px;
     text-align: center;
-    color: #3AB0FF;
+    color: var(--blue);
 }
 
 .p2 {
     font-size: 35px;
     text-align: center;
-    color: #FFB562;
+    color: var(--orange);
     margin-top: 0;
 }
 
 .p3 {
     font-size: 35px;
     text-align: center;
-    color: #3AB0FF;
+    color: var(--pink);
     margin-top: 0;
 }
 
@@ -60,7 +63,7 @@ input[type=password] {
     padding: 15px;
     border: none;
     background: #ffffff;
-    color: black;
+    color: #000000;
 }
 
 input[type=text]:focus,
@@ -88,8 +91,8 @@ hr {
 /* Set a style for the submit/register button */
 .btn {
     display: block;
-    background-color: #f87474;
-    color: white;
+    background-color: var(--pink);
+    color: #ffffff;
     font-family: 'VT323', monospace;
     font-size: 30px;
     padding: 16px;
@@ -117,7 +120,9 @@ hr {
         padding-top: 0px;
     }
 
-    .p1, .p2, .p3 {
+    .p1,
+    .p2,
+    .p3 {
         font-size: 25px;
     }
 }
@@ -136,7 +141,9 @@ hr {
         padding-top: 0px;
     }
 
-    .p1, .p2, .p3 {
+    .p1,
+    .p2,
+    .p3 {
         font-size: 20px;
     }
 }

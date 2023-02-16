@@ -1,6 +1,9 @@
 body {
     background-color: #F9F2ED;
     font-family: 'VT323', monospace;
+    --blue: #3AB0FF;
+    --orange: #FFB562;
+    --pink: #F87474;
 }
 
 .wrapper {
@@ -83,34 +86,34 @@ a:hover {
 }
 
 #blue {
-    color: #3AB0FF;
+    color: var(--blue);
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
 #orange {
-    color: #FFB562;
+    color: var(--orange);
     margin-top: 10px;
     margin-bottom: 0px;
 
 }
 
 #pink {
-    color: #F87474;
+    color: var(--pink);
     margin-top: 10px;
     margin-bottom: 0px;
 }
 
 .blue {
-    color: #3AB0FF;
+    color: var(--blue);
 }
 
 .orange {
-    color: #FFB562;
+    color: var(--orange);
 }
 
 .pink {
-    color: #F87474;
+    color: var(--pink);
 }
 
 .user {
@@ -151,15 +154,15 @@ a:hover {
 }
 
 .make {
-    color: #3AB0FF;
+    color: var(--blue);
 }
 
 .your {
-    color: #FFB562
+    color: var(--orange);
 }
 
 .move {
-    color: #F87474;
+    color: var(--pink);
 }
 
 .info {
