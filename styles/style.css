@@ -6,8 +6,8 @@ body {
 .wrapper {
     display: grid;
     grid-template-columns: auto;
-    justify-content: center;   
-    margin-top: 30px;   
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .wrapper2 {
@@ -64,13 +64,20 @@ a:hover {
     align-items: center;
 }
 
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
 .img {
     width: 8%;
     padding: 0px 40px;
-} 
+}
 
-#rock:hover, 
-#paper:hover, 
+#rock:hover,
+#paper:hover,
 #scissors:hover {
     opacity: 0.5;
 }
