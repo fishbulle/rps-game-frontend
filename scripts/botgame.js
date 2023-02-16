@@ -81,4 +81,6 @@ function reset() {
     playerScore = 0;
     botScore = 0;
     moves = 0;
+
+    // disable knappar
 }
