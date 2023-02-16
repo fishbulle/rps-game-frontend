@@ -34,7 +34,6 @@ function checker(input) {  // input = draget spelaren gör
 
     compareChoices([input], [botChoice]);
     updateScore();
-
     if (moves === 5) {
         gameOver();
     }
