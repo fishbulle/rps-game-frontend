@@ -74,7 +74,11 @@ function gameOver() {
         result.innerHTML = "GAME OVER. IT'S A DRAW!"
     }
 
+    disableIcons();
+}
+
+function disableIcons() {
     document.getElementById("rock").disabled = true;
     document.getElementById("paper").disabled = true;
-    document.getElementById("scissors").disabled = true;    
+    document.getElementById("scissors").disabled = true;
 }
