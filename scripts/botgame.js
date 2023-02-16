@@ -75,6 +75,10 @@ function gameOver() {
         result.innerHTML = "GAME OVER. IT'S A DRAW!"
     }
 
+    reset();
+}
+
+function reset() {
     playerScore = 0;
     botScore = 0;
     moves = 0;
