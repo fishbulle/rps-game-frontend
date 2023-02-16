@@ -74,11 +74,7 @@ function gameOver() {
         result.innerHTML = "GAME OVER. IT'S A DRAW!"
     }
 
-    reset();
-}
-
-function reset() {
     document.getElementById("rock").disabled = true;
     document.getElementById("paper").disabled = true;
-    document.getElementById("scissors").disabled = true;
+    document.getElementById("scissors").disabled = true;    
 }
