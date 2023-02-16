@@ -1,9 +1,12 @@
-body {
-    background-color: #F9F2ED;
-    font-family: 'VT323', monospace;
+:root {
     --blue: #3AB0FF;
     --orange: #FFB562;
     --pink: #F87474;
+}
+
+body {
+    background-color: #F9F2ED;
+    font-family: 'VT323', monospace;
 }
 
 .wrapper {
