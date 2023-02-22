@@ -82,9 +82,7 @@ a:hover {
     padding: 0px 40px;
 }
 
-#rock:hover,
-#paper:hover,
-#scissors:hover {
+.img:hover {
     opacity: 0.3;
 }
 
