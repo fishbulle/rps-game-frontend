@@ -85,7 +85,7 @@ a:hover {
 #rock:hover,
 #paper:hover,
 #scissors:hover {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 #blue {
@@ -148,6 +148,25 @@ a:hover {
     font-size: 60px;
     margin-top: 30px;
     margin-bottom: 20px;
+    animation: 1.5s blink ease-out infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .pick {
