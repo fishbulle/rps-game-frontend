@@ -65,12 +65,44 @@ const rpsApi = {
         } catch (error) {
             return console.log(`Något gick fel ${error}`);
         }
+    },
+
+    joinGame: async (playerId, gameId) => {
+        try {
+            const res = await fetch('http://localhost:8080/join/{gameId}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application-json'
+                },
+                body: JSON.stringify(playerId, gameId)
+            });
+            return await res.json();
+        } catch (error) {
+            return console.log(`Något gick fel ${error}`);
+        }
+    },
+
+    gameInfo: async (playerId, gameId) => {
+        try {
+            const res = await fetch('http://localhost:8080/games/result/{gameId}');
+            return await res.json();
+        } catch (error) {
+            return console.log(`Något gick fel ${error}`);
+        }
+    },
+
+    makeMove: async (gameId, playerId, sign) => {
+        try {
+            const res = await fetch('http://localhost:8080/games/move/{sign}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application-json'
+                },
+                body: JSON.stringify(gameId, playerId, sign)
+            });
+            return await res.json();
+        } catch (error) {
+            return console.log(`Något gick fel ${error}`);
+        }
     }
-
-    // joinGame: (POST)
-
-    // gameInfo: (GET)
-
-    // makeMove: (POST)
-
 };
