@@ -2,7 +2,7 @@
 
 const rpsApi = {
     setToken: (token) => sessionStorage.setItem('token', token),
-    getToken: () => sessionStorage.getItem('token'), 
+    getToken: () => sessionStorage.getItem('token'),
     fetchToken: async () => {
         try {
             const res = await fetch('http://localhost:8080/auth/token');
@@ -18,7 +18,8 @@ const rpsApi = {
             const res = await fetch('http://localhost:8080/user/regsiter', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json'
+                    'Content-Type': 'application-json',
+                    token: rpsApi.getToken()
                 },
                 body: JSON.stringify(name, username, password)
             });
@@ -33,7 +34,8 @@ const rpsApi = {
             const res = await fetch('http://localhost:8080/user/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json'
+                    'Content-Type': 'application-json',
+                    token: rpsApi.getToken()
                 },
                 body: JSON.stringify(username, password)
             });
@@ -57,7 +59,8 @@ const rpsApi = {
             const res = await fetch('http://localhost:8080/start', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json'
+                    'Content-Type': 'application-json',
+                    token: rpsApi.getToken()
                 },
                 body: JSON.stringify(playerId)
             });
@@ -67,14 +70,15 @@ const rpsApi = {
         }
     },
 
-    joinGame: async (playerId, gameId) => {
+    joinGame: async (gameId) => {
         try {
             const res = await fetch('http://localhost:8080/join/{gameId}', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json'
+                    'Content-Type': 'application-json',
+                    token: rpsApi.getToken()
                 },
-                body: JSON.stringify(playerId, gameId)
+                body: JSON.stringify(gameId)
             });
             return await res.json();
         } catch (error) {
@@ -82,7 +86,7 @@ const rpsApi = {
         }
     },
 
-    gameInfo: async (playerId, gameId) => {
+    gameInfo: async () => {
         try {
             const res = await fetch('http://localhost:8080/games/result/{gameId}');
             return await res.json();
@@ -96,7 +100,8 @@ const rpsApi = {
             const res = await fetch('http://localhost:8080/games/move/{sign}', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json'
+                    'Content-Type': 'application-json',
+                    token: rpsApi.getToken()
                 },
                 body: JSON.stringify(gameId, playerId, sign)
             });
@@ -106,3 +111,7 @@ const rpsApi = {
         }
     }
 };
+
+if (rpsApi.getToken() === null) {
+    rpsApi.fetchToken();
+}
