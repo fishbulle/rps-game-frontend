@@ -1,6 +1,8 @@
 // Objekt med alla fetch-anrop till mitt API
 
 const rpsApi = {
+    setToken: (token) => sessionStorage.setItem('token', token),
+    getToken: () => sessionStorage.getItem('token'), 
     fetchToken: async () => {
         try {
             const res = await fetch('http://localhost:8080/auth/token');
@@ -50,9 +52,15 @@ const rpsApi = {
         }
     },
 
-    startGame: async () => {
+    startGame: async (playerId) => {
         try {
-            const res = await fetch('http://localhost:8080/start');
+            const res = await fetch('http://localhost:8080/start', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application-json'
+                },
+                body: JSON.stringify(playerId)
+            });
             return await res.json();
         } catch (error) {
             return console.log(`Något gick fel ${error}`);
