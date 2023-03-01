@@ -54,7 +54,7 @@ const rpsApi = {
         }
     },
 
-    startGame: async (playerId) => {
+    startGame: async (username) => {
         try {
             const res = await fetch('http://localhost:8080/start', {
                 method: 'POST',
@@ -62,7 +62,7 @@ const rpsApi = {
                     'Content-Type': 'application-json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify(playerId)
+                body: JSON.stringify(username)
             });
             return await res.json();
         } catch (error) {
@@ -72,7 +72,7 @@ const rpsApi = {
 
     joinGame: async (gameId) => {
         try {
-            const res = await fetch('http://localhost:8080/join/{gameId}', {
+            const res = await fetch(`http://localhost:8080/join/${gameId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application-json',
@@ -88,22 +88,22 @@ const rpsApi = {
 
     gameInfo: async () => {
         try {
-            const res = await fetch('http://localhost:8080/games/result/{gameId}');
+            const res = await fetch(`http://localhost:8080/games/result/${gameId}`);
             return await res.json();
         } catch (error) {
             return console.log(`Något gick fel ${error}`);
         }
     },
 
-    makeMove: async (gameId, playerId, sign) => {
+    makeMove: async (gameId, sign) => {
         try {
-            const res = await fetch('http://localhost:8080/games/move/{sign}', {
+            const res = await fetch(`http://localhost:8080/games/move/${sign}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application-json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify(gameId, playerId, sign)
+                body: JSON.stringify(gameId, sign)
             });
             return await res.json();
         } catch (error) {

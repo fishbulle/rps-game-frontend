@@ -5,4 +5,7 @@ rpsApi.openGames()
             document.querySelector('#opengames')
                 .insertAdjacentHTML('beforeend', gameToList.toUpperCase())
         })
-    });
+    })
+    .then(
+        // joinGame()
+    )
