@@ -106,6 +106,4 @@ if (rpsApi.getToken() === null) {
 // göra så att när man klickar på 'new online' game
 // så startas ett nytt spel och användaren kopplas med sitt id & username till spelet
 
-// hur se status på spel? behövs det implementeras? gameInfo()
-
 // makeMove på game-delen, ingen js kod för spelet?

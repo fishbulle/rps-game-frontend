@@ -64,6 +64,19 @@ a:hover {
     width: 50%;
 }
 
+::placeholder {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+#name {
+    border: 2px solid black;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    width: 65%;
+}
+
 .choices {
     display: flex;
     justify-content: center;
@@ -82,7 +95,12 @@ a:hover {
     padding: 0px 40px;
 }
 
-.img:hover {
+.imgGame {
+    width: 8%;
+    padding: 0px 40px;
+}
+
+.imgGame:hover {
     opacity: 0.3;
 }
 
