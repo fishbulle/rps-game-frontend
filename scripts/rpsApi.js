@@ -13,7 +13,7 @@ const rpsApi = {
         }
     },
 
-    setUsername: async (updatePlayer) => {
+    setUsername: async (name) => {
         try {
             const res = await fetch('http://localhost:8080/user/name', {
                 method: 'POST',
@@ -21,7 +21,7 @@ const rpsApi = {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify({ updatePlayer })
+                body: JSON.stringify({ name })
             });
             return await res.json();
         } catch (error) {

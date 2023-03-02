@@ -30,8 +30,13 @@
         </header>
 
         <article id="container">
-            <h2><span class="blue">WHAT'S</span> <span class="orange">YOUR</span> <span class="pink">NAME?</span></h2>
-            <input type="text" class="form_input" id="name" placeholder="donkey kong..." autofocus required="">
+            <h2><span class="blue">WHAT'S</span>
+                <span class="orange">YOUR</span>
+                <span class="pink">NAME?</span>
+            </h2>
+            <input type="text" name="name" id="name" placeholder="donkey kong..." autofocus required=""
+                onkeydown="keyHandler(event)">
+            <label for="name" class="pressenter">and then press enter</label>
         </article>
     </main>
 
