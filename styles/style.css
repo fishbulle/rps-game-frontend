@@ -69,7 +69,7 @@ a:hover {
     font-style: italic;
 }
 
-#name {
+#username {
     border: 2px solid black;
     font-family: 'VT323', monospace;
     font-size: 2rem;

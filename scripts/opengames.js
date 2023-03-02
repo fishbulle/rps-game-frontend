@@ -1,3 +1,5 @@
+// FUNKAR
+
 rpsApi.openGames()
     .then(data => {
         data.map(game => {

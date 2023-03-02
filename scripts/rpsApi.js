@@ -13,7 +13,9 @@ const rpsApi = {
         }
     },
 
-    setUsername: async (name) => {
+    setUsername: (username) => sessionStorage.setItem('username', username),
+    getUsername: () => sessionStorage.getItem('username'),
+    fetchUsername: async (username) => {
         try {
             const res = await fetch('http://localhost:8080/user/name', {
                 method: 'POST',
@@ -21,7 +23,7 @@ const rpsApi = {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify({ name })
+                body: JSON.stringify({ username })
             });
             return await res.json();
         } catch (error) {
@@ -68,9 +70,9 @@ const rpsApi = {
         }
     },
 
-    gameInfo: async () => {
+    gameInfo: async (gameId) => {  // "gameId is not defined"
         try {
-            const res = await fetch(`http://localhost:8080/games/result/${gameId}`);
+            const res = await fetch(`http://localhost:8080/games/${gameId}`);
             return await res.json();
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
@@ -94,10 +96,6 @@ const rpsApi = {
     }
 
 };
-
-if (rpsApi.getToken() === null) {
-    rpsApi.fetchToken();
-}
 
 // TODO
 // göra open games klickbara med joinGame()

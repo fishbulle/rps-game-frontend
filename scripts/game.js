@@ -6,7 +6,7 @@ let result = document.querySelector(".result");
 
 movesLeft.innerHTML = `MOVES LEFT: ${5}`;
 
-// refresh gameInfo function
+
 
 function refreshGame() {
     setInterval(refreshGameInfo, 3000);
@@ -15,8 +15,11 @@ function refreshGame() {
 function refreshGameInfo() {
     rpsApi.gameInfo()
     .then(data => {
-        console.log(data);
-        document.getElementById('player2').innerHTML = data.playerTwo;
+        // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'playerOne')
+        // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'username')
+        document.getElementById('player1').innerHTML = data.playerOne.username;
+        document.getElementById('player2').innerHTML = data.playerTwo.username;
+
         // switch gamestatus
         // beroende på info från backend (win/lose/draw)
         // skriv ut infon 
@@ -27,3 +30,5 @@ function refreshGameInfo() {
         // rpsApi.makeMove(sign) ?? 
     })
 }
+
+refreshGame();

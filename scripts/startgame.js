@@ -1,3 +1,5 @@
+// FUNKARR förutom innerHTML
+
 function newOnlineGame() {
     rpsApi.startGame()
         .then(data => {
