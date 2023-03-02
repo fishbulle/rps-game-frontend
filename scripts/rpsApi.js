@@ -9,39 +9,7 @@ const rpsApi = {
             const text = await res.json();
             return rpsApi.setToken(text);
         } catch (error) {
-            return console.log(`Något gick fel ${error}`);
-        }
-    },
-
-    register: async (name, username, password) => {
-        try {
-            const res = await fetch('http://localhost:8080/user/regsiter', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application-json',
-                    token: rpsApi.getToken()
-                },
-                body: JSON.stringify(name, username, password)
-            });
-            return await res.json();
-        } catch (error) {
-            return console.log(`Något gick fel ${error}`);
-        }
-    },
-
-    login: async (username, password) => {
-        try {
-            const res = await fetch('http://localhost:8080/user/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application-json',
-                    token: rpsApi.getToken()
-                },
-                body: JSON.stringify(username, password)
-            });
-            return await res.json();
-        } catch (error) {
-            return console.log(`Något gick fel ${error}`);
+            return console.log(`Something went wrong ${error}`);
         }
     },
 
@@ -50,7 +18,7 @@ const rpsApi = {
             const res = await fetch('http://localhost:8080/games');
             return await res.json();
         } catch (error) {
-            return console.log(`Något gick fel ${error}`);
+            return console.log(`Something went wrong ${error}`);
         }
     },
 
@@ -59,14 +27,14 @@ const rpsApi = {
             const res = await fetch('http://localhost:8080/start', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json',
+                    'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify(username)
+                body: JSON.stringify({ username }) // ska det vara username? eller gameEntity?
             });
             return await res.json();
         } catch (error) {
-            return console.log(`Något gick fel ${error}`);
+            return console.log(`Something went wrong ${error}`);
         }
     },
 
@@ -75,43 +43,73 @@ const rpsApi = {
             const res = await fetch(`http://localhost:8080/join/${gameId}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json',
+                    'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify(gameId)
+                // body: JSON.stringify(gameId) .. @PathVariable gameId??
             });
             return await res.json();
         } catch (error) {
-            return console.log(`Något gick fel ${error}`);
+            return console.log(`Something went wrong ${error}`);
         }
     },
 
-    gameInfo: async () => {
+    gameInfo: async () => {  // requeset header på en GET metod?
         try {
             const res = await fetch(`http://localhost:8080/games/result/${gameId}`);
             return await res.json();
         } catch (error) {
-            return console.log(`Något gick fel ${error}`);
+            return console.log(`Something went wrong ${error}`);
         }
     },
 
-    makeMove: async (gameId, sign) => {
+    makeMove: async (gameStatus, sign) => {
         try {
             const res = await fetch(`http://localhost:8080/games/move/${sign}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application-json',
+                    'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify(gameId, sign)
+                body: JSON.stringify({ gameStatus })
             });
             return await res.json();
         } catch (error) {
-            return console.log(`Något gick fel ${error}`);
+            return console.log(`Something went wrong ${error}`);
+        }
+    },
+
+    register: async (name, username, password) => {
+        try {
+            const res = await fetch('http://localhost:8080/auth/regsiter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // token: rpsApi.getToken() - ska denna vara med ?
+                },
+                // body: JSON.stringify(request? name, username, password?)
+            });
+            return await res.json();
+        } catch (error) {
+            return console.log(`Something went wrong ${error}`);
         }
     }
+
+    // LOG IN HUR? skriva metod i Spring Boot eller JS?
+
 };
 
 if (rpsApi.getToken() === null) {
     rpsApi.fetchToken();
 }
+
+// TODO
+// göra open games klickbara med joinGame()
+// så man skickas och kopplas till spelet som player 2 (username i html)
+
+// göra så att när man klickar på 'new online' game
+// så startas ett nytt spel och användaren kopplas med sitt id & username till spelet
+
+// hur se status på spel? behövs det implementeras? gameInfo()
+
+// makeMove på game-delen, ingen js kod för spelet?
