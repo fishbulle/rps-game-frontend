@@ -13,6 +13,22 @@ const rpsApi = {
         }
     },
 
+    setUsername: async (updatePlayer) => {
+        try {
+            const res = await fetch('http://localhost:8080/user/name', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    token: rpsApi.getToken()
+                },
+                body: JSON.stringify({ updatePlayer })
+            });
+            return await res.json();
+        } catch (error) {
+            return console.log(`Something went wrong ${error}`);
+        }
+    },
+
     openGames: async () => {
         try {
             const res = await fetch('http://localhost:8080/games');
@@ -22,15 +38,14 @@ const rpsApi = {
         }
     },
 
-    startGame: async (username) => {
+    startGame: async () => {
         try {
             const res = await fetch('http://localhost:8080/start', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
-                },
-                body: JSON.stringify({ username }) // ska det vara username? eller gameEntity?
+                }
             });
             return await res.json();
         } catch (error) {
@@ -45,8 +60,7 @@ const rpsApi = {
                 headers: {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
-                },
-                // body: JSON.stringify(gameId) .. @PathVariable gameId??
+                }
             });
             return await res.json();
         } catch (error) {
@@ -54,7 +68,7 @@ const rpsApi = {
         }
     },
 
-    gameInfo: async () => {  // requeset header på en GET metod?
+    gameInfo: async () => {
         try {
             const res = await fetch(`http://localhost:8080/games/result/${gameId}`);
             return await res.json();
@@ -77,25 +91,7 @@ const rpsApi = {
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
-    },
-
-    register: async (name, username, password) => {
-        try {
-            const res = await fetch('http://localhost:8080/auth/regsiter', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // token: rpsApi.getToken() - ska denna vara med ?
-                },
-                // body: JSON.stringify(request? name, username, password?)
-            });
-            return await res.json();
-        } catch (error) {
-            return console.log(`Something went wrong ${error}`);
-        }
     }
-
-    // LOG IN HUR? skriva metod i Spring Boot eller JS?
 
 };
 
