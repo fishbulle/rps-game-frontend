@@ -1,4 +1,6 @@
-// FUNKAR
+// FUNKAR IBLAND ???
+// Uncaught (in promise) TypeError: data.map is not a function
+// GET http://localhost:8080/games 500
 
 rpsApi.openGames()
     .then(data => {

@@ -1,3 +1,5 @@
+// WIP
+
 let player1Score = 0;
 let player2Score = 0;
 let moves = 0;

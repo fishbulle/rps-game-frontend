@@ -14,9 +14,8 @@ function keyHandler(event) {
         if (username === null || username === '') {
             username = "Anynomus player"
         } else {
-        rpsApi.fetchUsername(username);
+            rpsApi.fetchUsername(username)
+                .then(window.location.href = "front.html");
         }
     }
-
-    // skickas till front.html
 }
