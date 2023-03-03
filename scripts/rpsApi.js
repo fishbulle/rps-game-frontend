@@ -23,7 +23,7 @@ const rpsApi = {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify({ username })
+                body: JSON.stringify({ 'username': username })
             });
             return await res.json();
         } catch (error) {

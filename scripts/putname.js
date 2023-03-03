@@ -1,4 +1,4 @@
-// FUNKAR men konsol skriver: SyntaxError: Unexpected end of JSON input
+// FUNKAR 
 
 if (rpsApi.getToken() === null) {
     rpsApi.fetchToken();
