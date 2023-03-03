@@ -15,6 +15,7 @@ const rpsApi = {
 
     setUsername: (username) => sessionStorage.setItem('username', username),
     getUsername: () => sessionStorage.getItem('username'),
+
     fetchUsername: async (username) => {
         try {
             const res = await fetch('http://localhost:8080/user/name', {
@@ -31,14 +32,9 @@ const rpsApi = {
         }
     },
 
-    openGames: async () => {
-        try {
-            const res = await fetch('http://localhost:8080/games');
-            return await res.json();
-        } catch (error) {
-            return console.log(`Something went wrong ${error}`);
-        }
-    },
+    setGameId: (gameId) => sessionStorage.setItem('gameId', gameId),
+    getGameId: () => sessionStorage.getItem('gameId'),
+    removeGameId: () => sessionStorage.removeItem('gameId'),
 
     startGame: async () => {
         try {
@@ -49,6 +45,17 @@ const rpsApi = {
                     token: rpsApi.getToken()
                 }
             });
+            let response = await res.json();
+            return rpsApi.setGameId(response.gameId);
+            // return console.log(response);
+        } catch (error) {
+            return console.log(`Something went wrong ${error}`);
+        }
+    },
+
+    openGames: async () => {
+        try {
+            const res = await fetch('http://localhost:8080/games');
             return await res.json();
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
@@ -64,22 +71,25 @@ const rpsApi = {
                     token: rpsApi.getToken()
                 }
             });
-            return await res.json();
+            let response = await res.json();
+            return rpsApi.setGameId(response.gameId)
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
     },
 
-    gameInfo: async (gameId) => {  // "gameId is not defined"
+    gameInfo: async (gameId) => {  
         try {
             const res = await fetch(`http://localhost:8080/games/${gameId}`);
-            return await res.json();
+            let response = await res.json();
+            return rpsApi.getGameId(response.gameId);
+            // return console.log(response);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
     },
 
-    makeMove: async (gameStatus, sign) => {
+    makeMove: async (sign) => {
         try {
             const res = await fetch(`http://localhost:8080/games/move/${sign}`, {
                 method: 'POST',
@@ -87,7 +97,7 @@ const rpsApi = {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
                 },
-                body: JSON.stringify({ gameStatus })
+                body: JSON.stringify({ 'move': sign })
             });
             return await res.json();
         } catch (error) {
@@ -101,7 +111,4 @@ const rpsApi = {
 // göra open games klickbara med joinGame()
 // så man skickas och kopplas till spelet som player 2 (username i html)
 
-// göra så att när man klickar på 'new online' game
-// så startas ett nytt spel och användaren kopplas med sitt id & username till spelet
-
-// makeMove på game-delen, ingen js kod för spelet?
+// makeMove på game-delen

@@ -1,6 +1,4 @@
-// FUNKAR IBLAND ???
-// Uncaught (in promise) TypeError: data.map is not a function
-// GET http://localhost:8080/games 500
+// FUNKAR
 
 rpsApi.openGames()
     .then(data => {
@@ -11,3 +9,7 @@ rpsApi.openGames()
                 .insertAdjacentHTML('beforeend', gameList.toUpperCase())
         })
     });
+
+
+// TODO
+// skapa metod i spring boot som raderar spel när man går ut

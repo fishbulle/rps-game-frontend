@@ -1,7 +1,7 @@
-// WIP
+// // WIP
 
-function joinOnlineGame() {
-    rpsApi.joinGame()
-        .then(data => console.log(data));
+// function joinOnlineGame() {
+//     rpsApi.joinGame()
+//         .then(data => console.log(data));
 
-}
+// }

@@ -1,5 +1,5 @@
 // FUNKARR
 
-function newOnlineGame() {
-    rpsApi.startGame();
-}
+// function newOnlineGame() {
+//     console.log(rpsApi.startGame());
+// }

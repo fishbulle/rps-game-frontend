@@ -1,3 +1,6 @@
+
+
+
 // WIP
 
 let player1Score = 0;
@@ -16,21 +19,25 @@ function refreshGame() {
 
 function refreshGameInfo() {
     rpsApi.gameInfo()
-    .then(data => {
+    .then(data => console.log(data));
+
+
+
+
         // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'playerOne')
         // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'username')
-        document.getElementById('player1').innerHTML = data.playerOne.username;
-        document.getElementById('player2').innerHTML = data.playerTwo.username;
+        // document.getElementById('player1').innerHTML = data.playerOne.username;
+        // document.getElementById('player2').innerHTML = data.playerTwo.username;
+
 
         // switch gamestatus
         // beroende på info från backend (win/lose/draw)
         // skriv ut infon 
         // case win:
         // case draw:
-        // case lose:
-
-        // rpsApi.makeMove(sign) ?? 
-    })
+        // case lose: 
 }
 
-refreshGame();
+function exitGame() {
+    rpsApi.removeGameId();
+}
