@@ -45,9 +45,8 @@ const rpsApi = {
                     token: rpsApi.getToken()
                 }
             });
-            let response = await res.json();
-            return rpsApi.setGameId(response.gameId);
-            // return console.log(response);
+            const text = await res.json();
+            return rpsApi.setGameId(text.gameId);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
@@ -62,6 +61,21 @@ const rpsApi = {
         }
     },
 
+    // joinGame: async (gameId) => {
+    //     try {
+    //         const response = await fetch(`http://localhost:8080/join/${gameId}`, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 token: rpsApi.getToken()
+    //             },
+    //         });
+    //         const gameId = await response.json();
+    //         return rpsApi.setGameId(gameId);
+    //     } catch (error) {
+    //         return console.log(`Something went wrong ${error}`);
+    //     }
+    // },
+
     joinGame: async (gameId) => {
         try {
             const res = await fetch(`http://localhost:8080/join/${gameId}`, {
@@ -71,18 +85,23 @@ const rpsApi = {
                     token: rpsApi.getToken()
                 }
             });
-            let response = await res.json();
-            return rpsApi.setGameId(response.gameId)
+            const response = await res.json();
+            return rpsApi.setGameId(gameId);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
     },
 
-    gameInfo: async (gameId) => {  
+    gameInfo: async (gameId) => {
         try {
-            const res = await fetch(`http://localhost:8080/games/${gameId}`);
+            const res = await fetch(`http://localhost:8080/games/result/${gameId}`, {
+                headers: {
+                    'Content-Type': 'application-json',
+                    token: rpsApi.getToken()
+                }
+            });
             let response = await res.json();
-            return rpsApi.getGameId(response.gameId);
+            return rpsApi.getGameId(gameId);
             // return console.log(response);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
@@ -96,8 +115,7 @@ const rpsApi = {
                 headers: {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
-                },
-                body: JSON.stringify({ 'move': sign })
+                }
             });
             return await res.json();
         } catch (error) {

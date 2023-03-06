@@ -1,6 +1,3 @@
-
-
-
 // WIP
 
 let player1Score = 0;
@@ -11,6 +8,10 @@ let result = document.querySelector(".result");
 
 movesLeft.innerHTML = `MOVES LEFT: ${5}`;
 
+function checker(sign) {
+    rpsApi.makeMove(sign)
+    .then(sign => console.log(sign)); // 400 bad request
+}
 
 
 function refreshGame() {
@@ -18,26 +19,12 @@ function refreshGame() {
 }
 
 function refreshGameInfo() {
-    rpsApi.gameInfo()
-    .then(data => console.log(data));
-
-
-
-
-        // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'playerOne')
-        // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'username')
-        // document.getElementById('player1').innerHTML = data.playerOne.username;
-        // document.getElementById('player2').innerHTML = data.playerTwo.username;
-
-
-        // switch gamestatus
-        // beroende på info från backend (win/lose/draw)
-        // skriv ut infon 
-        // case win:
-        // case draw:
-        // case lose: 
+    rpsApi.gameInfo(rpsApi.getGameId())
+        .then(data => console.log(data)); // säger att gameId är null .. men spelet har id i databsen
 }
 
 function exitGame() {
     rpsApi.removeGameId();
 }
+
+refreshGame();
