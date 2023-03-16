@@ -85,7 +85,7 @@ const rpsApi = {
                     token: rpsApi.getToken()
                 }
             });
-            const response = await res.json();
+            await res.json();
             return rpsApi.setGameId(gameId);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
@@ -100,9 +100,8 @@ const rpsApi = {
                     token: rpsApi.getToken()
                 }
             });
-            let response = await res.json();
+            await res.json();
             return rpsApi.getGameId(gameId);
-            // return console.log(response);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
@@ -126,7 +125,5 @@ const rpsApi = {
 };
 
 // TODO
-// göra open games klickbara med joinGame()
-// så man skickas och kopplas till spelet som player 2 (username i html)
 
 // makeMove på game-delen

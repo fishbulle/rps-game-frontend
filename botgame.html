@@ -25,7 +25,7 @@
         </header>
 
         <section>
-            <p class="info">PLAYER: <span id="playerScore">0</span> | BOT: <span id="botScore">0</span></p>
+            <p class="info">PLAYER: <span id="playerScore">0</span> vs BOT: <span id="botScore">0</span></p>
 
             <p class="pick">
                 <span class="blue">MAKE</span>
@@ -35,14 +35,16 @@
 
             <figure class="choices">
                 <input id="rock" class="imgGame" type="image" src="img/rock2.png" alt="rock" onclick="checker('rock')">
-                <input id="paper" class="imgGame" type="image" src="img/paper2.png" alt="paper" onclick="checker('paper')">
-                <input id="scissors" class="imgGame" type="image" src="img/sax.png" alt="scissors" onclick="checker('scissors')">
+                <input id="paper" class="imgGame" type="image" src="img/paper2.png" alt="paper"
+                    onclick="checker('paper')">
+                <input id="scissors" class="imgGame" type="image" src="img/sax.png" alt="scissors"
+                    onclick="checker('scissors')">
             </figure>
 
             <div class="moves">
-            <p id="movesLeft"></p>
-            <p id="playerMove"></p>
-            <p id="botMove"></p>
+                <p id="movesLeft"></p>
+                <p id="playerMove"></p>
+                <p id="botMove"></p>
             </div>
 
             <p class="result"></p>
@@ -50,16 +52,17 @@
 
         <article class="container2">
             <center>
-                    <a class="blue" href="botgame.html"> > PLAY AGAIN</a>
-                    <a class="orange" href="game.html" onclick="newOnlineGame()"> > PLAY ONLINE</a>
-                    <a class="pink" href="front.html"> > EXIT</a>
-            
+                <a class="blue" href="botgame.html"> > PLAY AGAIN</a>
+                <a class="orange" href="game.html" onclick="createGame()"> > PLAY ONLINE</a>
+                <a class="pink" href="front.html"> > EXIT</a>
+
             </center>
         </article>
 
     </main>
 
     <script src="scripts/botgame.js"></script>
+    <script src="scripts/rpsApi.js"></script>
 </body>
 
 </html>

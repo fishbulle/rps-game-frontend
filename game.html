@@ -24,7 +24,8 @@
         </header>
 
         <section>
-            <p class="info"><span id="player1">PLAYER NAME:</span> <span id="player1Score">0</span> | <span id="player2">PLAYER NAME:</span> <span id="player2Score">0</span></p>
+            <p class="info"><span id="player1"></span> <span id="player1Score"></span> vs <span id="player2"></span>
+                <span id="player2Score"></span></p>
 
             <p class="pick">
                 <span class="blue">MAKE</span>
@@ -34,8 +35,10 @@
 
             <figure class="choices">
                 <input id="rock" class="imgGame" type="image" src="img/rock2.png" alt="rock" onclick="checker('rock')">
-                <input id="paper" class="imgGame" type="image" src="img/paper2.png" alt="paper" onclick="checker('paper')">
-                <input id="scissors" class="imgGame" type="image" src="img/sax.png" alt="scissors" onclick="checker('scissors')">
+                <input id="paper" class="imgGame" type="image" src="img/paper2.png" alt="paper"
+                    onclick="checker('paper')">
+                <input id="scissors" class="imgGame" type="image" src="img/sax.png" alt="scissors"
+                    onclick="checker('scissors')">
             </figure>
 
             <div class="moves">
@@ -49,9 +52,8 @@
 
         <article class="container2">
             <center>
-                <!-- <a class="blue" href="game.html" onclick="newOnlineGame()"> > REMATCH </a> -->
                 <a class="orange" href="botgame.html"> > NEW BOT GAME</a>
-                <a class="pink" href="front.html" onclick="rpsApi.removeGameId()"> > EXIT</a>
+                <a class="pink" href="front.html"> > EXIT</a>
             </center>
         </article>
 
