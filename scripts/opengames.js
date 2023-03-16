@@ -1,15 +1,9 @@
-// FUNKAR
-
 rpsApi.openGames()
     .then(data => {
-        data.map(game => {
-            const gameList = `<a href="game.html"><li>
-            ${game.playerOne.username}: ${game.gameStatus}</li></a>`;
-            document.querySelector('#opengames')
-                .insertAdjacentHTML('beforeend', gameList.toUpperCase())
-        })
+        data.forEach(game => {
+            const gameList = `<li><button onclick="joinGame('${game.gameId}')">JOIN</button> ${game.playerOne.username}</li>`;
+            document
+                .querySelector('#opengames')
+                .insertAdjacentHTML('beforeend', gameList)
+        });
     });
-
-
-// TODO
-// skapa metod i spring boot som raderar spel när man går ut

@@ -1,30 +1,100 @@
-// WIP
+let result = document.querySelector('.result');
 
-let player1Score = 0;
-let player2Score = 0;
-let moves = 0;
-let movesLeft = document.getElementById("movesLeft");
-let result = document.querySelector(".result");
+refreshGame();
 
-movesLeft.innerHTML = `MOVES LEFT: ${5}`;
-
-function checker(sign) {
-    rpsApi.makeMove(sign)
-    .then(sign => console.log(sign)); // 400 bad request
+function onlyOnePlayer() {
+    rpsApi.gameInfo()
+        .then(data => {
+            if (data.playerTwo === null) {
+                disableIcons();
+            } else {
+                enableIcons();
+            }
+        })
 }
 
+function showPlayerNames() {
+    rpsApi.gameInfo()
+        .then(data => {
+            document.querySelector('#player1').innerHTML = data.playerOne.username;
+            if (data.playerTwo !== null) {
+                document.querySelector('#player2').innerHTML = data.playerTwo.username;
+            }
+        })
+}
 
-function refreshGame() {
-    setInterval(refreshGameInfo, 3000);
+// checker är en onclick som tar in det som 
+// spelaren trycker på dvs rock, paper eller scissors
+// och skickar det till POST metoden makeMove i mitt fetch-objekt
+function checker(move) {
+    rpsApi.makeMove(move);
+}
+
+function playerMove() {
+    rpsApi.gameInfo()
+        .then(data => {
+            if (data.playerOneMove !== null && data.playerTwoMove !== null) {
+                document.getElementById("player1Move").innerHTML =
+                    `${data.playerOne.username} PICKED <span> ${data.playerOneMove} </span>`;
+                document.getElementById("player2Move").innerHTML =
+                    `${data.playerTwo.username} PICKED <span> ${data.playerTwoMove} </span>`;
+            }
+        })
+}
+
+function updateScore() {
+    rpsApi.gameInfo()
+        .then(data => {
+            if (data.playerOne) {
+                if (data.result === 'WIN') {
+                    result.innerHTML = `YOU WIN!`
+                    disableIcons();
+                }
+
+                if (data.result === 'LOSE') {
+                    result.innerHTML = `YOU LOSE!`
+                    disableIcons();
+                }
+
+            } if (data.playerTwo) {
+                if (data.result === 'WIN') {
+                    result.innerHTML = `YOU WIN!`
+                    disableIcons();
+                }
+
+                if (data.result === 'LOSE') {
+                    result.innerHTML = `YOU LOSE!`
+                    disableIcons();
+                }
+
+            } if (data.result === 'DRAW') {
+                result.innerHTML = `IT'S A DRAW!`
+                disableIcons();
+            }
+        })
 }
 
 function refreshGameInfo() {
-    rpsApi.gameInfo(rpsApi.getGameId())
-        .then(data => console.log(data)); // säger att gameId är null .. men spelet har id i databsen
+    rpsApi.gameInfo()
+        .then(data => console.log(data));
+    onlyOnePlayer();
+    showPlayerNames();
+    playerMove();
+    updateScore();
 }
 
-function exitGame() {
-    rpsApi.removeGameId();
+function refreshGame() {
+    setInterval(refreshGameInfo, 1000);
 }
 
-refreshGame();
+function enableIcons() {
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
+}
+
+function disableIcons() {
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissors").disabled = true;
+}

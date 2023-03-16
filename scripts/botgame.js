@@ -28,9 +28,9 @@ function checker(input) {  // input = draget spelaren gör
     let num = Math.floor(Math.random() * 3);
     let botChoice = choices[num];
 
+    movesLeft.innerHTML = `MOVES LEFT: ${4 - moves}`;
     document.getElementById("botMove").innerHTML = `BOT PICKED <span> ${choices[num].toUpperCase()} </span>`;
     document.getElementById("playerMove").innerHTML = `YOU PICKED <span> ${input.toUpperCase()} </span>`;
-    movesLeft.innerHTML = `MOVES LEFT: ${4 - moves}`;
 
     compareChoices([input], [botChoice]);
     updateScore();

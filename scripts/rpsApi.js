@@ -1,5 +1,3 @@
-// Objekt med alla fetch-anrop till mitt API
-
 const rpsApi = {
     setToken: (token) => sessionStorage.setItem('token', token),
     getToken: () => sessionStorage.getItem('token'),
@@ -12,9 +10,6 @@ const rpsApi = {
             return console.log(`Something went wrong ${error}`);
         }
     },
-
-    setUsername: (username) => sessionStorage.setItem('username', username),
-    getUsername: () => sessionStorage.getItem('username'),
 
     fetchUsername: async (username) => {
         try {
@@ -38,14 +33,14 @@ const rpsApi = {
 
     startGame: async () => {
         try {
-            const res = await fetch('http://localhost:8080/start', {
+            const response = await fetch('http://localhost:8080/start', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    token: rpsApi.getToken()
-                }
+                    token: rpsApi.getToken(),
+                },
             });
-            const text = await res.json();
+            const text = await response.json();
             return rpsApi.setGameId(text.gameId);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
@@ -61,62 +56,50 @@ const rpsApi = {
         }
     },
 
-    // joinGame: async (gameId) => {
-    //     try {
-    //         const response = await fetch(`http://localhost:8080/join/${gameId}`, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 token: rpsApi.getToken()
-    //             },
-    //         });
-    //         const gameId = await response.json();
-    //         return rpsApi.setGameId(gameId);
-    //     } catch (error) {
-    //         return console.log(`Something went wrong ${error}`);
-    //     }
-    // },
-
     joinGame: async (gameId) => {
         try {
-            const res = await fetch(`http://localhost:8080/join/${gameId}`, {
+            const res = await fetch(`http://localhost:8080/games/join/${gameId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    token: rpsApi.getToken()
+                    token: rpsApi.getToken(),
                 }
             });
-            await res.json();
-            return rpsApi.setGameId(gameId);
+            const response = await res.json();
+            return rpsApi.setGameId(response.gameId);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
     },
 
-    gameInfo: async (gameId) => {
+    gameInfo: async () => {
         try {
-            const res = await fetch(`http://localhost:8080/games/result/${gameId}`, {
+            const res = await fetch(`http://localhost:8080/games/result`, {
                 headers: {
-                    'Content-Type': 'application-json',
+                    'Content-Type': 'application/json',
+                    gameId: rpsApi.getGameId(),
                     token: rpsApi.getToken()
                 }
             });
-            await res.json();
-            return rpsApi.getGameId(gameId);
+            const response = await res.json();
+            return response;
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
     },
 
-    makeMove: async (sign) => {
+    makeMove: async (move) => {
         try {
-            const res = await fetch(`http://localhost:8080/games/move/${sign}`, {
+            const res = await fetch(`http://localhost:8080/games/move/${move}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     token: rpsApi.getToken()
-                }
+                },
+                body: JSON.stringify({ 'gameId': rpsApi.getGameId() })
             });
-            return await res.json();
+            const response = await res.json();
+            return response;
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
@@ -124,6 +107,30 @@ const rpsApi = {
 
 };
 
-// TODO
+if (rpsApi.getToken() === null) {
+    rpsApi.fetchToken();
+}
 
-// makeMove på game-delen
+function keyHandler(event) {
+
+    if (event.keyCode === 13) {
+        let username = document.getElementById('username').value;
+
+        if (username === null || username === '') {
+            username = "Anynomus player"
+        } else {
+            rpsApi.fetchUsername(username)
+                .then(window.location.href = "front.html");
+        }
+    }
+}
+
+function createGame() {
+    rpsApi.startGame()
+        .then(() => location.assign("game.html"));
+}
+
+function joinGame(gameId) {
+    rpsApi.joinGame(gameId)
+        .then(() => location.assign('game.html'));
+}
