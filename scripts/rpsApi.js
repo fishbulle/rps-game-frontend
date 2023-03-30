@@ -1,4 +1,39 @@
+// Objekt med alla fetch-anrop till mitt API
+
 const rpsApi = {
+    // setJWT: (token) => sessionStorage.setItem('JWT', token),
+    // getJWT: () => sessionStorage.getItem('JWT'),
+    // register: async (name, username, password) => {
+    //     try {
+    //         const res = await fetch(`http://localhost:8080/auth/register`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ 'name': name, 'username': username, 'password': password })
+    //         });
+    //         const JWT = await res.json();
+    //         return rpsApi.setJWT(JWT.token);     
+    //     } catch (error) {
+    //         return console.log(`Something went wrong ${error}`);
+    //     }
+    // },
+
+    // authenticate: async (username, password) => {
+    //     try {
+    //         const res = await fetch(`http://localhost:8080/auth/authenticate`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ 'username': username, 'password': password })
+    //         });
+    //         return await res.json();
+    //     } catch (error) {
+    //         return console.log(`Something went wrong ${error}`);
+    //     }
+    // },
+
     setToken: (token) => sessionStorage.setItem('token', token),
     getToken: () => sessionStorage.getItem('token'),
     fetchToken: async () => {
@@ -10,7 +45,38 @@ const rpsApi = {
             return console.log(`Something went wrong ${error}`);
         }
     },
+    register: async (name, username, password) => {
+        try {
+            const res = await fetch(`http://localhost:8080/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 'name': name, 'username': username, 'password': password })
+            });
+            return await res.json();
+        } catch (error) {
+            return console.log(`Something went wrong ${error}`);
+        }
+    },
 
+    authenticate: async (username, password) => {
+        try {
+            const res = await fetch(`http://localhost:8080/auth/authenticate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 'username': username, 'password': password })
+            });
+            return await res.json();
+        } catch (error) {
+            return console.log(`Something went wrong ${error}`);
+        }
+    },
+
+    setUsername: (username) => sessionStorage.setItem('username', username),
+    getUsername: () => sessionStorage.getItem('username'),
     fetchUsername: async (username) => {
         try {
             const res = await fetch('http://localhost:8080/user/name', {
@@ -103,34 +169,56 @@ const rpsApi = {
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
-    }
+    },
 
+    deleteGame: async () => {
+        try {
+            const res = await fetch(`http://localhost:8080/games/delete`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    gameId: rpsApi.getGameId()
+                }
+            });
+            const response = await res.json();
+            return response;
+        } catch (error) {
+            return console.log(`Something went wrong ${error}`);
+        }
+    }
 };
 
+// om inte token finns sätts den direkt
 if (rpsApi.getToken() === null) {
     rpsApi.fetchToken();
 }
 
 function keyHandler(event) {
-
+    // 13 är ENTER-tangenten
     if (event.keyCode === 13) {
         let username = document.getElementById('username').value;
-
-        if (username === null || username === '') {
-            username = "Anynomus player"
+        if (username === null || username === "") {
+            username = "Anynomus player";
+            rpsApi.fetchUsername(username)
+                .then(window.location.href = "navigation.html");
         } else {
             rpsApi.fetchUsername(username)
-                .then(window.location.href = "front.html");
+                .then(window.location.href = "navigation.html");
         }
     }
 }
 
 function createGame() {
     rpsApi.startGame()
-        .then(() => location.assign("game.html"));
+        .then(() => location.assign('game.html'));
 }
 
 function joinGame(gameId) {
     rpsApi.joinGame(gameId)
         .then(() => location.assign('game.html'));
+}
+
+function deleteGame() {
+    rpsApi.deleteGame()
+        .then(() => location.assign('navigation.html'))
 }

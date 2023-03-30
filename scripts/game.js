@@ -2,6 +2,8 @@ let result = document.querySelector('.result');
 
 refreshGame();
 
+// kollar om det bara är en spelare ansluten
+// och om det är det så går det inte att trycka på ikonerna
 function onlyOnePlayer() {
     rpsApi.gameInfo()
         .then(data => {
@@ -17,7 +19,9 @@ function showPlayerNames() {
     rpsApi.gameInfo()
         .then(data => {
             document.querySelector('#player1').innerHTML = data.playerOne.username;
-            if (data.playerTwo !== null) {
+            if (data.playerTwo === null) {
+                document.querySelector('#player2').innerHTML = 'Waiting for player to connect...'
+            } else if (data.playerTwo !== null) {
                 document.querySelector('#player2').innerHTML = data.playerTwo.username;
             }
         })
@@ -45,31 +49,33 @@ function playerMove() {
 function updateScore() {
     rpsApi.gameInfo()
         .then(data => {
-            if (data.playerOne) {
-                if (data.result === 'WIN') {
-                    result.innerHTML = `YOU WIN!`
+            if (data.playerTwo !== null) {
+                if (rpsApi.getToken() === data.playerOne.playerId) {
+                    if (data.result === 'WIN') {
+                        result.innerHTML = `${data.playerOne.username} WINS!`
+                        disableIcons();
+                    }
+
+                    if (data.result === 'LOSE') {
+                        result.innerHTML = `${data.playerTwo.username} WINS!`
+                        disableIcons();
+                    }
+
+                } if (rpsApi.getToken() === data.playerTwo.playerId) {
+                    if (data.result === 'WIN') {
+                        result.innerHTML = `${data.playerTwo.username} WINS!`
+                        disableIcons();
+                    }
+
+                    if (data.result === 'LOSE') {
+                        result.innerHTML = `${data.playerOne.username} WINS!`
+                        disableIcons();
+                    }
+
+                } if (data.result === 'DRAW') {
+                    result.innerHTML = `IT'S A DRAW!`
                     disableIcons();
                 }
-
-                if (data.result === 'LOSE') {
-                    result.innerHTML = `YOU LOSE!`
-                    disableIcons();
-                }
-
-            } if (data.playerTwo) {
-                if (data.result === 'WIN') {
-                    result.innerHTML = `YOU WIN!`
-                    disableIcons();
-                }
-
-                if (data.result === 'LOSE') {
-                    result.innerHTML = `YOU LOSE!`
-                    disableIcons();
-                }
-
-            } if (data.result === 'DRAW') {
-                result.innerHTML = `IT'S A DRAW!`
-                disableIcons();
             }
         })
 }
