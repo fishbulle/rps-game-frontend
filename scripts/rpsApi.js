@@ -74,7 +74,7 @@ const rpsApi = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${JWT}`,
+                    'Authorization': `Bearer ${rpsApi.getJWT}`,
                     playerId: rpsApi.getPlayerId(),
                 },
             });
@@ -100,7 +100,7 @@ const rpsApi = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${JWT}`,
+                    'Authorization': `Bearer ${rpsApi.getJWT()}`,
                     playerId: rpsApi.getPlayerId(),
                 }
             });
@@ -134,7 +134,7 @@ const rpsApi = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${JWT}`,
+                    'Authorization': `Bearer ${rpsApi.getJWT()}`,
                     playerId: rpsApi.getPlayerId()
                 },
                 body: JSON.stringify({ 'gameId': rpsApi.getGameId() })
@@ -184,7 +184,7 @@ const rpsApi = {
 // }
 
 function createGame() {
-    if (rpsApi.getPlayerId() === null) {
+    if (rpsApi.getJWT() === null) {
         alert('You need to log in to play online!')
     } else {
         rpsApi.startGame()
@@ -193,7 +193,7 @@ function createGame() {
 }
 
 function joinGame(gameId) {
-    if (rpsApi.getPlayerId() === null) {
+    if (rpsApi.getJWT() === null) {
         alert('You need to log in to play online!')
     } else {
         rpsApi.joinGame(gameId)
