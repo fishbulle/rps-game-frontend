@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,29 +18,27 @@
 
 <body>
 
-    <form action="/login" method="post">
-        <div class="container">
-            <h1>SIGN IN</h1>
-            <p class="p1">LOG IN TO AN EXISTING ACCOUNT.</p>
+    <div class="container">
+        <h1>SIGN IN</h1>
+        <p class="p1">LOG IN TO AN EXISTING ACCOUNT.</p>
 
+        <form id="loginForm">
             <section class="container2">
                 <label for="username">USERNAME:</label>
-                <input type="text" placeholder="Enter Username" name="username" required>
-
-                <label for="psw">PASSWORD:</label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                <label for="password">PASSWORD:</label>
+                <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
                 <button type="submit" class="btn">LOGIN</button>
-                
             </section>
-            
-            <p class="p2">DON'T HAVE AN ACCOUNT? <br><a href="register.html">> SIGN UP</a></p>
-            <p class="p3"><a href="index.html">> EXIT</a></p>
-        </div>
-    </form>
+        </form>
 
-    <script src="scripts/rpsApi.js"></script>
+        <p class="p2">DON'T HAVE AN ACCOUNT? <br><a href="register.html">> SIGN UP</a></p>
+        <p class="p3"><a href="index.html">> EXIT</a></p>
+    </div>
+
     <script src="scripts/login.js"></script>
+    <script src="scripts/rpsApi.js"></script>
 </body>
 
-</html> -->
+</html>

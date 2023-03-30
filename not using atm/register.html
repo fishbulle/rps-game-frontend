@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,11 +18,12 @@
 
 <body>
 
-    <form action="/auth/register" method="post">
-        <div class="container">
-            <h1>REGISTER NEW USER</h1>
-            <p class="p1">FILL IN THIS FORM TO CREATE A NEW ACCOUNT.</p>
 
+    <div class="container">
+        <h1>REGISTER NEW USER</h1>
+        <p class="p1">FILL IN THIS FORM TO CREATE A NEW ACCOUNT.</p>
+
+        <form id="registerForm">
             <section class="container2">
                 <label for="name">NAME:</label>
                 <input type="text" placeholder="Enter Name" name="name" id="name" required>
@@ -30,24 +31,25 @@
                 <label for="username">USERNAME:</label>
                 <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
-                <label for="psw">PASSWORD:</label>
+                <label for="password">PASSWORD:</label>
                 <input type="password"
                     placeholder="Enter Password (minimum eight characters, at least one letter and one number)"
-                    name="psw" id="psw" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+                    name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
 
-                <label for="psw-repeat">REPEAT PASSWORD:</label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                <label for="password-repeat">REPEAT PASSWORD:</label>
+                <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat"
+                    required>
 
                 <button type="submit" class="btn">REGISTER</button>
             </section>
+        </form>
 
-            <p class="p2">ALREADY HAVE AN ACCOUNT? <br><a href="login.html">> SIGN IN</a></p>
-            <p class="p3"><a href="index.html">> EXIT</a></p>
-        </div>
-    </form>
+        <p class="p2">ALREADY HAVE AN ACCOUNT? <br><a href="login.html">> SIGN IN</a></p>
+        <p class="p3"><a href="index.html">> EXIT</a></p>
+    </div>
 
-    <script src="scripts/rpsApi.js"></script>
     <script src="scripts/register.js"></script>
+    <script src="scripts/rpsApi.js"></script>
 </body>
 
-</html> -->
+</html>
