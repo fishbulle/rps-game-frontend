@@ -18,11 +18,11 @@ function onlyOnePlayer() {
 function showPlayerNames() {
     rpsApi.gameInfo()
         .then(data => {
-            document.querySelector('#player1').innerHTML = data.playerOne.name;
+            document.querySelector('#player1').innerHTML = data.playerOne.username;
             if (data.playerTwo === null) {
                 document.querySelector('#player2').innerHTML = 'Waiting for player to connect...'
             } else if (data.playerTwo !== null) {
-                document.querySelector('#player2').innerHTML = data.playerTwo.name;
+                document.querySelector('#player2').innerHTML = data.playerTwo.username;
             }
         })
 }
@@ -39,9 +39,9 @@ function playerMove() {
         .then(data => {
             if (data.playerOneMove !== null && data.playerTwoMove !== null) {
                 document.getElementById("player1Move").innerHTML =
-                    `${data.playerOne.name} PICKED <span> ${data.playerOneMove} </span>`;
+                    `${data.playerOne.username} PICKED <span> ${data.playerOneMove} </span>`;
                 document.getElementById("player2Move").innerHTML =
-                    `${data.playerTwo.name} PICKED <span> ${data.playerTwoMove} </span>`;
+                    `${data.playerTwo.username} PICKED <span> ${data.playerTwoMove} </span>`;
             }
         })
 }
@@ -52,23 +52,23 @@ function updateScore() {
             if (data.playerTwo !== null) {
                 if (rpsApi.getPlayerId() === data.playerOne.playerId) {
                     if (data.result === 'WIN') {
-                        result.innerHTML = `${data.playerOne.name} WINS!`
+                        result.innerHTML = `${data.playerOne.username} WINS!`
                         disableIcons();
                     }
 
                     if (data.result === 'LOSE') {
-                        result.innerHTML = `${data.playerTwo.name} WINS!`
+                        result.innerHTML = `${data.playerTwo.username} WINS!`
                         disableIcons();
                     }
 
-                } if (rpsApi.getToken() === data.playerTwo.playerId) {
+                } if (rpsApi.getPlayerId() === data.playerTwo.playerId) {
                     if (data.result === 'WIN') {
-                        result.innerHTML = `${data.playerTwo.name} WINS!`
+                        result.innerHTML = `${data.playerTwo.username} WINS!`
                         disableIcons();
                     }
 
                     if (data.result === 'LOSE') {
-                        result.innerHTML = `${data.playerOne.name} WINS!`
+                        result.innerHTML = `${data.playerOne.username} WINS!`
                         disableIcons();
                     }
 

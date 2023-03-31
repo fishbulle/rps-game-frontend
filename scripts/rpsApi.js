@@ -12,8 +12,7 @@ const rpsApi = {
                 },
                 body: JSON.stringify({ 'name': name, 'username': username, 'password': password })
             });
-            const JWT = await res.json();
-            return rpsApi.setJWT(JWT.token), rpsApi.setPlayerId(JWT.playerId);
+            return await res.json();
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
@@ -28,7 +27,8 @@ const rpsApi = {
                 },
                 body: JSON.stringify({ 'username': username, 'password': password })
             });
-            return await res.json();
+            const JWT = await res.json();
+            return rpsApi.setJWT(JWT.token), rpsApi.setPlayerId(JWT.playerId);
         } catch (error) {
             return console.log(`Something went wrong ${error}`);
         }
@@ -36,33 +36,6 @@ const rpsApi = {
 
     setPlayerId: (playerId) => sessionStorage.setItem('playerId', playerId),
     getPlayerId: () => sessionStorage.getItem('playerId'),
-    // fetchToken: async () => {
-    //     try {
-    //         const res = await fetch('http://localhost:8080/auth/token');
-    //         const text = await res.json();
-    //         return rpsApi.setPlayerId(text);
-    //     } catch (error) {
-    //         return console.log(`Something went wrong ${error}`);
-    //     }
-    // },
-
-    // setUsername: (username) => sessionStorage.setItem('username', username),
-    // getUsername: () => sessionStorage.getItem('username'),
-    // fetchUsername: async (username) => {
-    //     try {
-    //         const res = await fetch('http://localhost:8080/user/name', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 token: rpsApi.getToken()
-    //             },
-    //             body: JSON.stringify({ 'username': username })
-    //         });
-    //         return await res.json();
-    //     } catch (error) {
-    //         return console.log(`Something went wrong ${error}`);
-    //     }
-    // },
 
     setGameId: (gameId) => sessionStorage.setItem('gameId', gameId),
     getGameId: () => sessionStorage.getItem('gameId'),
@@ -74,8 +47,8 @@ const rpsApi = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${rpsApi.getJWT}`,
-                    playerId: rpsApi.getPlayerId(),
+                    'Authorization': `Bearer ${rpsApi.getJWT()}`,
+                    playerId: rpsApi.getPlayerId()
                 },
             });
             const text = await response.json();
